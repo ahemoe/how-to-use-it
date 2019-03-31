@@ -49,8 +49,22 @@ services:
     networks:
       - front
 
+  node:
+    build: ./docker/node
+    container_name: django.npm
+    volumes:
+      - ./docker/node:/home/node/configuration
+      - ./static/public:/home/node/static/public
+      - ./apps/frontEnd:/home/node/apps/frontEnd
+      - node_modules:/home/node/node_modules
+    tty: true
+
 networks:
   front:
     driver: bridge
   back:
     driver: bridge
+
+volumes:
+  node_modules:
+    driver: local

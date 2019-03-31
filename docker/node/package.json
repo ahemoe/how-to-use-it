@@ -1,0 +1,19 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "^4.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node-sass /home/node/apps/frontEnd/scss/sample.scss /home/node/static/public/css/sample.css --output-style expanded",
+    "auto-sass": "node-sass /home/node/apps/frontEnd/scss/sample.scss /home/node/static/public/css/sample.css --output-style expanded -w",
+    "pruduction-sass": "node-sass /home/node/apps/frontEnd/scss/sample.scss /home/node/static/public/css/sample.css --output-style compressed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
