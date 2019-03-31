@@ -2,10 +2,18 @@
 
 ## 環境構築方法
 1. クローンしてDjangoでプロジェクト作成する<br>
-2. docker-compose.ymlがあるディレクトリで、`docker-compose build`を叩く(暫定) <br>
-3. docker-compose.ymlがあるディレクトリで、`docker-compose run web python manage.py migrate`を叩きマイグレーション（DB環境を移行≒更新）する<br>
-4. docker-compose.ymlがあるディレクトリで、`docker-compose run web python manage.py createsuperuser`を叩き管理者ユーザーを作成する<br>
-3. docker-compose.ymlがあるディレクトリで、`docker-compose up`を叩く<br>
+2. docker-compose.ymlがあるディレクトリで、docker-compose buildを叩く(暫定) <br>
+3. docker-compose.ymlがあるディレクトリで、docker-compose run web python manage.py migrateを叩きマイグレーション（DB環境を移行≒更新）する<br>
+4. docker-compose.ymlがあるディレクトリで、docker-compose run web python manage.py createsuperuserを叩き管理者ユーザーを作成する<br>
+5. docker-compose.ymlがあるディレクトリで、docker-compose up -dを叩く<br>
+6. docker-compose.ymlがあるディレクトリで、docker-compose exec node npm installを叩く
+
+## node環境のパッケージ追加方法
+新しいパッケージの追加時は以下のコマンドを実行  
+
+1. docker-compose up -d  
+2. docker-compose exec node npm install <package名>  
+3. docker-compose build
 
 ## 動作確認
 - 動作確認は http://localhost:8000/myapp （またはDockerマシンのIP:8000/myapp） でアクセスし、「Hello, World.」が表示されることを確認する
@@ -33,33 +41,47 @@
     - 規模が大きくなってきても管理しやすいように名前空間を分けることが目的
     - プロジェクト直下は共通部分とかで使おうかなあ…いらないかなあ……？
 
+### Modelの書き方
+そのうち
+
+### テストの書き方
+そのうち
+
 ## アプリ概要
 
 ## アプリのディレクトリ構成(予定)
 ```
 Project(how-to-use-it)
 ┣docker(Dockerfileの設定)
-┃ ┗db(MySQLの設定)
-┃ ┗web(Djangoの設定)
-┃ ┗nginx(nginxの設定)
+┃ ┣db(MySQLの設定)
+┃ ┣web(Djangoの設定)
+┃ ┣nginx(nginxの設定)
 ┃ ┗node(node環境の設定)
 ┣mysite
 ┃ ┗（サイト全体の設定とか）
 ┣static
-┃ ┗public
-┃   ┗scss
-┃ ┗admin
+┃ ┣admin（管理サイト）
+┃ ┃ ┣js
+┃ ┃ ┗css
+┃ ┗public（公開サイト）
 ┃   ┣js
 ┃   ┗css
 ┣apps
-┃ ┗myapp 
-┃   ┣migrations
-┃   ┣account（会員登録/ログインなどのアカウント機能）
-┃   ┣review（レビュー機能）
-┃   ┣search（検索機能）
-┃   ┣frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
-┃   ┃  ┗sass?
-┃   ┗templates
+┃ ┣myapp（動作確認用）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┣account（会員登録/ログインなどのアカウント機能）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┣review（レビュー機能）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┣search（検索機能）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┗frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
+┃   ┣js
+┃   ┗scss
  ```
 
 ## アプリの設定
