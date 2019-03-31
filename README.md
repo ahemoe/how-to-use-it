@@ -33,26 +33,47 @@
     - 規模が大きくなってきても管理しやすいように名前空間を分けることが目的
     - プロジェクト直下は共通部分とかで使おうかなあ…いらないかなあ……？
 
+### Modelの書き方
+そのうち
+
+### テストの書き方
+そのうち
+
 ## アプリ概要
 
 ## アプリのディレクトリ構成(予定)
 ```
 Project(how-to-use-it)
 ┣docker(Dockerfileの設定)
-┃ ┗db(MySQLの設定)
-┃ ┗web(Djangoの設定)
-┃ ┗nginx(nginxの設定)
+┃ ┣db(MySQLの設定)
+┃ ┣web(Djangoの設定)
+┃ ┣nginx(nginxの設定)
+┃ ┗node(node環境の設定)
 ┣mysite
 ┃ ┗（サイト全体の設定とか）
 ┣static
-┃ ┗admin
+┃ ┣admin（管理サイト）
+┃ ┃ ┣js
+┃ ┃ ┗css
+┃ ┗public（公開サイト）
 ┃   ┣js
 ┃   ┗css
-┗apps
-　┣account（会員登録/ログインなどのアカウント機能）
-　┣review（レビュー機能）
-　┣search（検索機能）
-　┗frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
+┣apps
+┃ ┣myapp（動作確認用）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┣account（会員登録/ログインなどのアカウント機能）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┣review（レビュー機能）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┣search（検索機能）
+┃ ┃ ┣migrations
+┃ ┃ ┗templates
+┃ ┗frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
+┃   ┣js
+┃   ┗scss
  ```
 
 ## アプリの設定
