@@ -42,17 +42,24 @@ Project(how-to-use-it)
 ┃ ┗db(MySQLの設定)
 ┃ ┗web(Djangoの設定)
 ┃ ┗nginx(nginxの設定)
+┃ ┗node(node環境の設定)
 ┣mysite
 ┃ ┗（サイト全体の設定とか）
 ┣static
+┃ ┗public
+┃   ┗scss
 ┃ ┗admin
 ┃   ┣js
 ┃   ┗css
-┗apps
-　┣account（会員登録/ログインなどのアカウント機能）
-　┣review（レビュー機能）
-　┣search（検索機能）
-　┗frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
+┣apps
+┃ ┗myapp 
+┃   ┣migrations
+┃   ┣account（会員登録/ログインなどのアカウント機能）
+┃   ┣review（レビュー機能）
+┃   ┣search（検索機能）
+┃   ┣frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
+┃   ┃  ┗sass?
+┃   ┗templates
  ```
 
 ## アプリの設定
