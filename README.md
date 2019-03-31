@@ -5,7 +5,15 @@
 2. docker-compose.ymlがあるディレクトリで、docker-compose buildを叩く(暫定) <br>
 3. docker-compose.ymlがあるディレクトリで、docker-compose run web python manage.py migrateを叩きマイグレーション（DB環境を移行≒更新）する<br>
 4. docker-compose.ymlがあるディレクトリで、docker-compose run web python manage.py createsuperuserを叩き管理者ユーザーを作成する<br>
-3. docker-compose.ymlがあるディレクトリで、docker-compose upを叩く<br>
+5. docker-compose.ymlがあるディレクトリで、docker-compose up -dを叩く<br>
+6. docker-compose.ymlがあるディレクトリで、docker-compose exec node npm installを叩く
+
+## node環境のパッケージ追加方法
+新しいパッケージの追加時は以下のコマンドを実行  
+
+1. docker-compose up -d  
+2. docker-compose exec node npm install <package名>  
+3. docker-compose build
 
 ## 動作確認
 - 動作確認は http://localhost:8000/myapp （またはDockerマシンのIP:8000/myapp） でアクセスし、「Hello, World.」が表示されることを確認する
