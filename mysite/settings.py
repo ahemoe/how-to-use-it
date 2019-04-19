@@ -11,21 +11,25 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# .env file settings
+env = environ.Env(DEBUG=(bool, False),)
+environ.Env.read_env('.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r6k52ltc5!d=fb5bv=5_o)^ejm8_9voqarqe@3u1kony-(3@g@'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['192.168.99.10', 'localhost', '127.0.0.']
+ALLOWED_HOSTS = ['192.168.99.100', 'localhost', '127.0.0.']
 
 
 # Application definition
@@ -38,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.myapp',
+    'apps.account',
+    'apps.review',
+    'apps.search',
 ]
 
 MIDDLEWARE = [
@@ -77,13 +84,13 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sample',
-        'USER': 'root',
-        'PASSWORD': 'password',
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
         'OPTIONS': {
             'read_default_file': './docker/db/conf/my.cnf',
         },
-        'HOST': 'db',
+        'HOST': 'django.db',
         'PORT': '3306',
     }
 }
@@ -127,3 +134,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+DJANGO_READ_ENV_FILE = env('DJANGO_READ_ENV_FILE')
