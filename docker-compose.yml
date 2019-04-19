@@ -11,12 +11,7 @@ services:
       - ./docker/db/data:/var/lib/mysql
     expose:
       - "3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=sample
-      - MYSQL_USER=mysql
-      - MYSQL_PASSWORD=password
-      - TZ='Asia/Tokyo'
+    env_file: .env
     networks:
       - back
 
