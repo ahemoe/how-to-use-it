@@ -4,11 +4,26 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "node-sass": "^4.11.0"
+    "node-sass": "^4.11.0",
+    "vue": "^2.6.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.7.0",
+    "webpack": "^4.30.0",
+    "webpack-bundle-tracker": "^0.4.2-beta",
+    "webpack-cli": "^3.3.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/.bin/webpack --mode development",
+    "build": "node_modules/.bin/webpack --mode production",
+    "watch": "node_modules/.bin/webpack --watch -d",
     "sass": "node-sass /home/node/apps/frontEnd/scss/sample.scss /home/node/static/public/css/sample.css --output-style expanded",
     "auto-sass": "node-sass /home/node/apps/frontEnd/scss/sample.scss /home/node/static/public/css/sample.css --output-style expanded -w",
     "pruduction-sass": "node-sass /home/node/apps/frontEnd/scss/sample.scss /home/node/static/public/css/sample.css --output-style compressed"

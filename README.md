@@ -1,7 +1,8 @@
 # スーパーや飲食店などのシステムを紹介するアプリ
 
 ## 環境構築方法
-1. クローンしてDjangoでプロジェクト作成する<br>
+### docker編
+1. クローンしてプロジェクトを作成する<br>
 2. docker-compose.ymlがあるディレクトリで、docker-compose buildを叩く(暫定) <br>
 3. docker-compose.ymlがあるディレクトリで、docker-compose run web python manage.py migrateを叩きマイグレーション（DB環境を移行≒更新）する<br>
 4. docker-compose.ymlがあるディレクトリで、docker-compose run web python manage.py createsuperuserを叩き管理者ユーザーを作成する<br>
@@ -9,10 +10,10 @@
 6. docker-compose.ymlがあるディレクトリで、docker-compose exec node npm installを叩く
 
 ## node環境のパッケージ追加方法
-新しいパッケージの追加時は以下のコマンドを実行  
+新しいパッケージの追加時は以下のコマンドを実行
 
-1. docker-compose up -d  
-2. docker-compose exec node npm install <package名>  
+1. docker-compose up -d
+2. docker-compose exec node npm install <package名>
 3. docker-compose build
 
 ## 動作確認
@@ -81,7 +82,9 @@ Project(how-to-use-it)
 ┃ ┃ ┗templates
 ┃ ┗frontEnd（SASSやJSは全部ここにまとめる、コンパイル先はstatic）
 ┃   ┣js
-┃   ┗scss
+┃   ┣scss
+┃   ┗templates
+┃     ┗common（全ページのベースとなるHTMLとか）
  ```
 
 ## アプリの設定

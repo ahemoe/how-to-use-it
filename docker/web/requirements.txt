@@ -1,3 +1,7 @@
 Django>=2.0,<3.0
+DjangoRESTframework>=3.8
+Django-filter>=2.1
+Django-environ>=0.4.5
+Django-webpack-loader>=0.6
 mysqlclient>=1.4
 uWSGI>=2.0
