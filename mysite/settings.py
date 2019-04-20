@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.account',
     'apps.review',
     'apps.search',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
 DJANGO_READ_ENV_FILE = env('DJANGO_READ_ENV_FILE')
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}

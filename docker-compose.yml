@@ -49,8 +49,9 @@ services:
     container_name: django.npm
     volumes:
       - ./docker/node:/home/node/configuration
-      - ./static/public:/home/node/static/public
+      - ./static:/home/node/static
       - ./apps/frontEnd:/home/node/apps/frontEnd
+      - ./docker/node/webpack.config.js:/home/node/webpack.config.js
       - node_modules:/home/node/node_modules
     tty: true
 
